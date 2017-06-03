@@ -121,7 +121,8 @@ public class SubidaViajero extends JFrame{
 					@Override
 					public void run() {
 						segundos = Integer.parseInt(lbContador.getText());
-						precio=precio+Double.parseDouble(lbprecio.getText());
+						double preciox=Double.parseDouble(lbprecio.getText());
+						double preciototal=preciox+precio;
 						
 						
 						
@@ -131,11 +132,11 @@ public class SubidaViajero extends JFrame{
 							}catch(Exception e){}
 							segundos++;
 							if(segundos>=5){
-							precio=precio+0.18;
+							preciototal=preciototal+0.18;
 							segundos=0;
 							}
 							lbContador.setText("" + segundos);
-							lbprecio.setText(precio+" Euros");
+							lbprecio.setText(preciototal+" Euros");
 							
 						}
 						
@@ -149,6 +150,12 @@ public class SubidaViajero extends JFrame{
 		frame.getContentPane().add(btnGo);
 		
 		JButton btnFintrayecto = new JButton("Fin del trayecto");
+		btnFintrayecto.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				controlcontador=false;
+			}
+		});
 		btnFintrayecto.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnFintrayecto.setBounds(161, 169, 255, 125);
 		frame.getContentPane().add(btnFintrayecto);

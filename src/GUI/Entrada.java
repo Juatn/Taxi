@@ -3,11 +3,17 @@ package GUI;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import Models.Cliente;
+import Models.ListaOrdenada;
+
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Date;
+import java.util.ArrayList;
 
-public class Entrada extends JFrame{
+public class Entrada extends JFrame {
 
 	private JFrame frame;
 
@@ -42,24 +48,27 @@ public class Entrada extends JFrame{
 		frame.setBounds(100, 100, 662, 388);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JButton ButtonSubida = new JButton("Subida Viajero");
 		ButtonSubida.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
-				frame.setVisible(false);
-				SubidaViajero p=new SubidaViajero();
-				p.frame.setVisible(true);
-				p.controlcontador=true;
+				ArrayList<Cliente> lista = new ArrayList<Cliente>();
 
-				
-			 
+				java.util.Date fecha = new java.util.Date();
+				Cliente c = new Cliente(fecha);
+				lista.add(c);
+
+				frame.setVisible(false);
+				SubidaViajero p = new SubidaViajero();
+				p.frame.setVisible(true);
+				p.controlcontador = true;
+
 			}
 		});
 		ButtonSubida.setBounds(42, 67, 216, 168);
 		frame.getContentPane().add(ButtonSubida);
-		
+
 		JButton ButtonCaja = new JButton("Caja del dia");
 		ButtonCaja.setBounds(344, 67, 216, 168);
 		frame.getContentPane().add(ButtonCaja);
